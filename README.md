@@ -12,6 +12,7 @@ Allows you to easily control OBS (or anything you write a driver for!) from a we
 The server acts as a middle ground, serving pages for user control with Lua widgets and running drivers, small bits of software that implement simple C# interfaces, written in Lua, that allow the server to talk to, essentially, anything.
 
 ## TODO
+* **Downgrade to .NET 7.0**
 * Drivers support
 * Drivers for common software
 * More actually useful widgets
