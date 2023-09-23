@@ -1,0 +1,48 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+.fullheight {
+    height: 100%;
+}
+
+.layout-vsplit {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 10px;
+    align-content: start;
+    align-items: start;
+    justify-items: start;
+}
+.layout-hsplit {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-gap: 10px;
+    align-content: start;
+    align-items: start;
+    justify-items: start;
+}
+
+.nowrap {
+    width: max-content;
+    height: min-content;
+}
+
+.widget { 
+    border: 1px solid black; 
+}

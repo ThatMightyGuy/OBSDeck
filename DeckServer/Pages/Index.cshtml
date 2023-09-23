@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@addTagHelper *, DeckServer
+@{
+    ViewData["Title"] = "Loading widgets";
+}
+
+<link rel="stylesheet" href="~/css/site.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+
+<grid class="layout-hsplit">
+    <grid class="layout-vsplit">
+        <widget src="Widgets/clock.lua"></widget>
+        <widget src="Widgets/clock.lua"></widget>
+    </grid>
+    <widget src="Widgets/luaver.lua"></widget>
+</grid>
+
+<script type="text/javascript" src="~/js/site.js"></script>
