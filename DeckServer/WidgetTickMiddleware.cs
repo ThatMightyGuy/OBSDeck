@@ -25,7 +25,7 @@ public class WidgetTickMiddleware
             #if DEBUG
             logger.LogDebug("Tick request from {rip}", context.Connection.RemoteIpAddress);
             #endif
-            string id = context.Connection.Id;
+            string id = context.Session.Id;
             if(WidgetTagHelper.Widgets.TryGetValue(id, out List<Widget>? wl))
             {
                 

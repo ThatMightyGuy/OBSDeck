@@ -22,28 +22,19 @@ public class DisconnectionHub : Hub
 
     public override async Task OnConnectedAsync()
     {
-        logger.LogInformation("Hub connect: {id} [{wid}]", Context.ConnectionId, GetHttpContext().Connection.Id);
+        logger.LogInformation("Hub connect: {id} [{wid}]", Context.ConnectionId, GetHttpContext().Session.Id);
         await base.OnConnectedAsync();
     }
 
     public override async Task OnDisconnectedAsync(Exception? exception)
     {
         if(exception is not null) logger.LogWarning(exception.Message);
-        logger.LogInformation("Hub disconnect: {id} [{wid}]", Context.ConnectionId, GetHttpContext().Connection.Id);
+        logger.LogInformation("Hub disconnect: {id} [{wid}]", Context.ConnectionId, GetHttpContext().Session.Id);
         logger.LogInformation("Cleaning up orphaned memory");
-        // Remove this!
         #if DEBUG
-        foreach(var kvp in WidgetTagHelper.Widgets)
-        {
-            string data = string.Join('\n', kvp.Value) + "\n";
-            logger.LogWarning("{k}      ------------------\n{v}", kvp.Key, data);
-        }
+        logger.LogDebug("Cleaning up {id}", httpContext?.Session.Id);
         #endif
-
-        #if DEBUG
-        logger.LogDebug("Cleaning up {id}", httpContext?.Connection.Id);
-        #endif
-        WidgetTagHelper.Clean(httpContext?.Connection.Id ?? "");
+        WidgetTagHelper.Clean(httpContext?.Session.Id ?? "");
         logger.LogInformation("{count} currently connected", WidgetTagHelper.ConnectionCount());
         logger.LogInformation("Loaded widgets: {count}", WidgetTagHelper.WidgetCount());
 

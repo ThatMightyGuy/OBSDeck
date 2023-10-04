@@ -7,6 +7,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AddRazorPages();
         builder.Services.AddSignalR();
+        builder.Services.AddSession();
         var app = builder.Build();
         
         if (!app.Environment.IsDevelopment())
@@ -18,6 +19,7 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseRouting();
+        app.UseSession();
         app.UseMiddleware<WidgetTickMiddleware>();
         app.MapRazorPages();
         app.MapHub<DisconnectionHub>("/api/obsdock/v1/disconnect");

@@ -20,7 +20,7 @@ public class WidgetTagHelper : TagHelper
     #pragma warning restore IDE0028
     private static readonly object widgetsLock = new();
 
-    private string? ConnectionId => ViewContext?.HttpContext.Connection.Id;
+    private string? ConnectionId => ViewContext?.HttpContext.Session.Id;
 
     public override void Process(TagHelperContext context, TagHelperOutput output)
     {
@@ -52,7 +52,7 @@ public class WidgetTagHelper : TagHelper
             }
             catch(Exception ex)
             {
-                Console.WriteLine($"Widget {output.TagName} failed to load: {ex.Message}");
+                Console.WriteLine($"Widget {Src} failed to load: {ex.Message}");
             }
 
             output.TagName = null;

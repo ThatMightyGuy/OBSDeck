@@ -26,7 +26,7 @@ function updateWidgets(text)
 function tick()
 {
     var xhr = new XMLHttpRequest();
-    
+    xhr.withCredentials = true;
     function handleResponse()
     {
         if (xhr.readyState === XMLHttpRequest.DONE)

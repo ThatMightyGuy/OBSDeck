@@ -21,9 +21,10 @@ public class IndexModel : PageModel, IDisposable
         logger.LogInformation(
             "Connection from {rip} [{id}]; {count} currently connected",
             HttpContext.Connection.RemoteIpAddress,
-            HttpContext.Connection.Id,
+            HttpContext.Session.Id,
             WidgetTagHelper.ConnectionCount()
         );
+        HttpContext.Session.SetString("sid", HttpContext.Session.Id);
         #if DEBUG
         logger.LogInformation("Loaded widgets: {count}", WidgetTagHelper.WidgetCount());
         #endif
@@ -32,7 +33,7 @@ public class IndexModel : PageModel, IDisposable
     public void Dispose()
     {
         #if DEBUG
-        logger.LogDebug("Disposing of connection {id}", HttpContext.Connection.Id);
+        logger.LogDebug("Disposing of connection {id}", HttpContext.Session.Id);
         #endif
         GC.SuppressFinalize(this);
     }

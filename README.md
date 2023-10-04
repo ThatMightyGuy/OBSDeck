@@ -12,7 +12,6 @@ Allows you to easily control OBS (or anything you write a driver for!) from a we
 The server acts as a middle ground, serving pages for user control with Lua widgets and running drivers, small bits of software that implement simple C# interfaces, written in Lua, that allow the server to talk to, essentially, anything.
 
 ## TODO
-* **Downgrade to .NET 7.0**
 * Drivers support
 * Drivers for common software
 * More actually useful widgets
@@ -24,7 +23,6 @@ The server acts as a middle ground, serving pages for user control with Lua widg
 ## Known issues
 *Read those as part of **TODO***
 * The server takes a really long time to stop if it is processing ticking requests from even a single client
-* The `WidgetTagHelper.Widgets` dict is not getting cleared of closed connections as it uses the `HttpContext.Connection.Id` as a key, and that `Id` changes by the time the client's SignalR connects
 * In particular cases ticking widgets causes an `AccessViolationException` due to the widget's memory being released and the relevant objects disposed of by the time the thread tries to run the Lua on_update function. Might be already fixed by the introduction of locks and minor refactoring - needs more testing
 * Client-side JS is very fiddly and stops working when it gets a tick with other clients *(virtually non-existent)* data
 
