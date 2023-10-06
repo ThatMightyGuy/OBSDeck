@@ -19,8 +19,15 @@ public readonly struct Widget : IWidget, IDisposable
     {
         Id = Guid.NewGuid();
         this.state = state;
-        start = GetFunction(state, "start");
-        onUpdate = GetFunction(state, "on_update");
+        try
+        {
+            start = GetFunction(state, "start");
+            onUpdate = GetFunction(state, "on_update");
+        }
+        catch (ArgumentNullException ex)
+        {
+            throw new InterfaceNotImplementedException("Widget does not implement IWidget", ex);
+        }
         Start();
     }
     public Widget(string src)
@@ -28,8 +35,15 @@ public readonly struct Widget : IWidget, IDisposable
         Id = Guid.NewGuid();
         state = new();
         state.DoString(src);
-        start = GetFunction(state, "start");
-        onUpdate = GetFunction(state, "on_update");
+        try
+        {
+            start = GetFunction(state, "start");
+            onUpdate = GetFunction(state, "on_update");
+        }
+        catch (ArgumentNullException ex)
+        {
+            throw new InterfaceNotImplementedException("Widget does not implement IWidget", ex);
+        }
         Start();
     }
 

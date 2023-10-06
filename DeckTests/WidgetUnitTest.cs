@@ -31,7 +31,7 @@ public class WidgetUnitTest : IDisposable
         {
             Widget w = new ("function on_update() end");
         }
-        catch (ArgumentNullException)
+        catch (InterfaceNotImplementedException)
         {
             return;
         }
