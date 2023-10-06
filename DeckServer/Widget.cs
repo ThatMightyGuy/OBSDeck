@@ -1,3 +1,4 @@
+using DeckUtils;
 using NLua;
 
 namespace DeckServer;
@@ -35,9 +36,13 @@ public readonly struct Widget : IWidget, IDisposable
     public override string ToString() => $"{base.ToString()}: {Id}";
     
     public void Start() => start.Call(Id.ToString());
-    public string OnUpdate() =>
-            (onUpdate.Call().First() as string) ??
-                throw new ArgumentNullException("on_update", "Expected str, got nil");
+    public string OnUpdate() {
+        object[] result = onUpdate.Call();
+        if(result.Length > 0)
+            return (string)result.First();
+        else
+            throw new InvalidResultException("on_update", "str", "nil");
+    }
 
     public void Dispose()
     {

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckServer", "DeckServer\De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckUtils", "DeckUtils\DeckUtils.csproj", "{55D9CD01-4560-4119-B72F-CC1B75153B50}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeckTests", "DeckTests\DeckTests.csproj", "{CEA00ED6-85DF-4BD0-A949-518445AE37E5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{55D9CD01-4560-4119-B72F-CC1B75153B50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55D9CD01-4560-4119-B72F-CC1B75153B50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55D9CD01-4560-4119-B72F-CC1B75153B50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEA00ED6-85DF-4BD0-A949-518445AE37E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEA00ED6-85DF-4BD0-A949-518445AE37E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEA00ED6-85DF-4BD0-A949-518445AE37E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEA00ED6-85DF-4BD0-A949-518445AE37E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

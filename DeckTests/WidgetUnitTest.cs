@@ -1,4 +1,7 @@
 using DeckServer;
+using DeckUtils;
+using NLua.Exceptions;
+
 namespace DeckTests;
 
 public class WidgetUnitTest : IDisposable
@@ -14,7 +17,7 @@ public class WidgetUnitTest : IDisposable
             new Widget("errfor('This is definitely an error!')");
             #pragma warning restore CA1806
         }
-        catch (NLua.Exceptions.LuaException)
+        catch (LuaException)
         {
             return;
         }
@@ -22,13 +25,28 @@ public class WidgetUnitTest : IDisposable
     }
 
     [Fact]
-    public void NilUpdateTest()
+    public void InterfaceNotImplementedThrowTest()
     {
         try
         {
-            Widget w = new ("function on_update()\nreturn nil\nend");
+            Widget w = new ("function on_update() end");
         }
-        catch (NLua.Exceptions.LuaException)
+        catch (ArgumentNullException)
+        {
+            return;
+        }
+        Assert.Fail("The code did not throw");
+    }
+    
+    [Fact]
+    public void NilUpdateThrowTest()
+    {
+        try
+        {
+            Widget w = new ("function start() end function on_update() end");
+            w.OnUpdate();
+        }
+        catch (InvalidResultException)
         {
             return;
         }

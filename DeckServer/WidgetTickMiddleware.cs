@@ -39,8 +39,8 @@ public class WidgetTickMiddleware
                     catch(InvalidOperationException ex)
                     {
                         logger.LogCritical("Epic fail while ticking widget {w}: {msg}", w, ex.Message);
-                        logger.LogCritical(Utils.CRIT_TRACE_LOG, ex.StackTrace);
-                        logger.LogCritical(Utils.REPORT_URL, "https://github.com/thatmightyguy/obsdeck/issues");
+                        logger.LogCritical(Constants.CRIT_TRACE_LOG, ex.StackTrace);
+                        logger.LogCritical(Constants.REPORT_URL, "https://github.com/thatmightyguy/obsdeck/issues");
                     }
                     await context.Response.Body.WriteAsync(
                         new ReadOnlyMemory<byte>(

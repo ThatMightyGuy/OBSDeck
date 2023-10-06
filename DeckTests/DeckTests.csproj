@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DeckServer\DeckServer.csproj" />
+    <ProjectReference Include="..\DeckUtils\DeckUtils.csproj" />
   </ItemGroup>
 
 </Project>
